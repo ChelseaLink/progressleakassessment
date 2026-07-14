@@ -680,10 +680,13 @@ function showResults(){
 // ── NAV ───────────────────────────────────────────────────────────────────────
 function trans(id){
   var cur=document.querySelector('.screen.active');
-  if(cur&&cur.id!==id){
+  if(cur&&cur.id===id) return;
+  if(cur){
     cur.classList.add('exit');
     setTimeout(function(){cur.classList.remove('active','exit');cur.style.display='none';show(id);},200);
-  } else if(!cur) show(id);
+  } else {
+    show(id);
+  }
 }
 function show(id){
   var t=document.getElementById(id);
